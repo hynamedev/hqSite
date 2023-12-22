@@ -63,8 +63,8 @@
                 </button>
               </div>
             </form>
-            <a class="nav-link" href="login">Login</a>
-            <a class="nav-link" href="register">Register</a>
+            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="/register">Register</a>
           </div>
         </nav>
       </div>
@@ -73,10 +73,10 @@
 </template>
 
 <style scoped>
-@import "../static/css/style.css";
 @import "../static/css/bootstrap.css";
 @import "../static/css/font-awesome.css";
 @import "../static/css/fonts.css";
 @import "../static/css/schedule.css";
+@import "../static/css/style.css";
 
 </style>

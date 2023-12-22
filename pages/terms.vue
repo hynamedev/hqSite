@@ -2,18 +2,6 @@
 import Posts from "@/components/FeaturedPostsSection.vue";
 import {ref} from "vue";
 
-let posts = ref([]);
-let onlinePlayers = ref(1)
-function getPosts() {
-  posts = ref([{title: "a", content: "a", link: "a", postDate: 0, author: "tt"},
-    {
-      title: "b",
-      content: "b",
-      link: "ac",
-      postDate: 0,
-      author: "tt"
-    }]);
-}
 </script>
 
 

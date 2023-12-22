@@ -1,88 +1,92 @@
 <script setup>
+
+import jquery from 'jquery'
 const route = useRoute()
+
 
 const baseURL = 'http://localhost:8080'; // replace with your base URL
 const headers = {'MHQ-Authorization': 'website'};
 
-let user = reactive({ data: null, online: true });
-user = {
-  data: {
-    primeavian: {
-      uuid: "aee1b4bb-3652-4d90-b95a-a976d26fa85a",
-      name: "primeavian"
-    }
-  },
-  banned: true,
-  online: true
-};
+let user = reactive({ data: null});
+let userInfo = reactive({ data: null });
+let userGrants = reactive({ data: null });
 
-// const response = await fetch(baseURL + "/lookup/byName", {
-//   method: 'POST',
-//   headers: headers,
-//   body: JSON.stringify({
-//     names: route.params.user
-//   })
-// });
-//
-// if (response.ok) {
-//   user.data = (await response.json());
-//   console.log('User data:', user.data); // Log the user data
-//
-// } else {
-//   console.error('Error:', response.status, await response.text()); // Log the status and response text
-// }
+const response = await fetch(baseURL + "/lookup/byName", {
+  method: 'POST',
+  headers: headers,
+  body: JSON.stringify({
+    names: route.params.user
+  })
+});
+
+
+console.log(JSON.stringify({
+  names: route.params.user
+}))
+
+if (response.ok) {
+  user.data = (await response.json())[route.params.user[0]];
+
+
+} else {
+  console.error('Error:', response.status, await response.text()); // Log the status and response text
+}
+
+
+const infoResponse = await fetch(baseURL + "/users/" + user.data.uuid + "/details", {
+  method: 'GET',
+  headers: headers,
+});
+
+if (infoResponse.ok) {
+  userInfo.data = (await infoResponse.json()).user;
+
+
+} else {
+  console.error('Error:', infoResponse.status, await infoResponse.text()); // Log the status and response text
+}
 
 </script>
-
-
-
-<style scoped>
-@import "@/static/css/style.css";
-@import "@/static/css/bootstrap.css";
-@import "@/static/css/font-awesome.css";
-@import "@/static/css/fonts.css";
-@import "@/static/css/schedule.css";
-
-</style>
 
 <template>
   <div class="container">
     <main class="main">
       <div class="profile-header shiny-border">
         <div>
-          <img :src="'https://crafatar.com/avatars/' + user.data[route.params.user[0]].uuid + '?size=34&amp;overlay'" :alt="user.data[route.params.user[0]].name" height="34" width="34" class="avatar-face">
-          {{ user.data[route.params.user[0]].name }}
+          <img :src="'https://minotar.net/avatar/' + user.data.uuid + '/34'" :alt="user.data.username" height="34" width="34" class="avatar-face">
+          {{ user.data.username }}
         </div>
       </div>
       <div class="row">
         <div class="col-lg-3">
           <aside id="sidebar">
             <div class="box">
-              <div class="banned-box" v-if="user.banned">
-                <span class="text">
-                  <strong class="title">Banned</strong>
-                  Last Seen <time datetime="1559509196295" data-format="ago" data-toggle="tooltip"></time>
-                </span>
-              </div>
-              <div class="online-box" v-else-if="user.online">
+<!--              <div class="banned-box" v-if="user">-->
+<!--                <span class="text">-->
+<!--                  <strong class="title">Banned</strong>-->
+<!--                  Last Seen <time datetime="1559509196295" data-format="ago" data-toggle="tooltip"></time>-->
+<!--                </span>-->
+<!--              </div>-->
+              <div class="online-box" v-if="userInfo.data.online">
                 <span class="text">
                   <strong class="title">Online</strong>
-                  Last Seen <time datetime="1559509196295" data-format="ago" data-toggle="tooltip"></time>
+                  Playing {{ userInfo.data.lastSeenOn }}
                 </span>
               </div>
               <div class="offline-box" v-else>
                 <span class="text">
                   <strong class="title">Offline</strong>
-                  Last Seen <time datetime="1559509196295" data-format="ago" data-toggle="tooltip"></time>
+                  Last Seen <time :datetime="userInfo.data.lastSeenAt" data-format="ago" data-toggle="tooltip"></time>
                 </span>
               </div>
 
 
-              <div id="user-info" class="user-box" data-player="0698321465877836">
-                <img :src="'https://crafatar.com/renders/body/' + user.data[route.params.user[0]].uuid + '?overlay'" :alt="user.data[route.params.user[0]].name" height="200" width="88" style="object-fit: contain;" class="avatar-half">
-                <strong class="name">{{ user.data[route.params.user[0]].name }}</strong>
+              <div id="user-info" class="user-box" :data-player="user.data.username">
+                <img :src="'https://visage.surgeplay.com/full/400/' + user.data.uuid + '.png'" :alt="user.data.username" height="200" width="88" style="transform: scale(1.3); object-fit: contain;" class="avatar-half">
+                <strong class="name">{{ user.data.username }}</strong>
               </div>
               <div class="premium-box">
+<!--                rank shit ig???? -->
                 <span class="btn btn-info" style="border-color: #AAAAAA; background-color: #AAAAAA; pointer-events:none; cursor: default;">
                 Default
                 </span>
@@ -93,14 +97,11 @@ user = {
               <ul class="statistics-item">
                 <li>
                   First joined
-                  <b><time datetime="1555107934267" data-format="date" data-toggle="tooltip"></time></b>
+                  <b><time :datetime="userInfo.data.firstSeenAt" data-format="date" data-toggle="tooltip"></time></b>
                 </li>
                 <li>
                   <b>1 days</b>
                   played
-                </li>
-                <li>
-                  <b>238</b> views per month
                 </li>
               </ul>
             </div>
@@ -113,6 +114,7 @@ user = {
               <div>
               </div>
             </div>
+
           </aside>
         </div>
         <div class="col-lg-9">
@@ -121,42 +123,31 @@ user = {
               <div class="block">
                 <ul class="tab-item nav nav-tabs">
                   <li>
-                    <a :href="'/u/' + user.data[route.params.user[0]].name" class="profile-tab active">
+                    <a :href="'/u/' + user.data.username" class="profile-tab active">
                       General
                     </a>
                   </li>
                   <li>
-                    <a :href="'/u/' + user.data[route.params.user[0]].name + '/practice'" class="profile-tab ">
+                    <a :href="'/u/' + user.data.username + '/practice'" class="profile-tab ">
                       Statistics
                     </a>
                   </li>
                   <li>
-                    <a :href="'/u/' + user.data[route.params.user[0]].name + '/threads'" class="profile-tab ">
+                    <a :href="'/u/' + user.data.username + '/threads'" class="profile-tab ">
                       Forums
                     </a>
                   </li>
-                </ul>
-                <ul class="tab-item nav nav-tabs">
                 </ul>
               </div>
               <div class="block">
                 <ul class="teams-item">
                   <li>
                     <div class="team-box bg-02">
-                      <a :href="'/u/' + user.data[route.params.user[0]].name + '/practice'">
+                      <a :href="'/u/' + user.data.username + '/practice'">
                         <strong class="title">Practice</strong>
                         <ul class="statistic-item">
                           <li>
-                            <b>3 hours</b> Played
-                          </li>
-                          <li>
-                            <b>7</b> Wins
-                          </li>
-                          <li>
-                            <b>14</b> Losses
-                          </li>
-                          <li>
-                            <b>0.50</b> W/L Ratio
+                            No Games Played
                           </li>
                         </ul>
                       </a>
@@ -164,7 +155,7 @@ user = {
                   </li>
                 </ul>
               </div>
-              <div class="block" id="comments" data-url="/u/0698321465877836/comments">
+              <div class="block" id="comments" :data-url="'/u/' + user.data.username + '/comments'">
                 <section class="comments-block">
                   <h2>
                     <i class="fa fa-comments" aria-hidden="true"></i> Comments

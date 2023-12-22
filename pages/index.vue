@@ -16,6 +16,27 @@ function getPosts() {
       author: "tt"
     }]);
 }
+
+
+const baseURL = 'http://localhost:8080'; // replace with your base URL
+const headers = {'MHQ-Authorization': 'website'};
+
+let servers = reactive({ data: null});
+
+const response = await fetch(baseURL + "/servers", {
+  method: 'GET',
+  headers: headers
+});
+
+if (response.ok) {
+  servers.data = (await response.json());
+
+  console.log(servers.data)
+
+} else {
+  console.error('Error:', response.status, await response.text()); // Log the status and response text
+}
+
 </script>
 
 

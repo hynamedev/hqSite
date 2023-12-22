@@ -12329,34 +12329,34 @@ a:hover {
     opacity: .6
 }
 
-.punishment-btn {
-    font-size: 12px;
-    line-height: 14px;
-    display: block;
-    color: #f9f1f2;
-    background: #c24a58;
-    white-space: normal;
-    text-align: left;
-    letter-spacing: 1.2px;
-    padding: 4px 7px;
-    margin: 0 0 15px;
-    padding-left: 66px;
-    position: relative
-}
 
-.punishment-btn:active,.punishment-btn:focus,.punishment-btn:hover {
-    background: #c24a58!important;
-    border-color: rgba(0,0,0,.32)!important;
-    opacity: .9
-}
 
-.punishment-btn:before {
-    width: 42px;
-    height: 55px;
-    content: "";
-    position: absolute;
-    left: 16px;
-    top: -10px;
+.punishment-btn{
+    font-size:12px;
+    line-height:14px;
+    display:block;
+    color:#f9f1f2;
+    background:#c24a58;
+    white-space:normal;
+    text-align:left;
+    letter-spacing:1.2px;
+    padding:4px 7px;
+    margin:0 0 15px;
+    padding-left:66px;
+    position:relative
+}
+.punishment-btn:active,.punishment-btn:focus,.punishment-btn:hover{
+    background:#c24a58!important;
+    border-color:rgba(0,0,0,.32)!important;
+    opacity:.9
+}
+.punishment-btn:before{
+    width:42px;
+    height:55px;
+    content:"";
+    position:absolute;
+    left:16px;
+    top:-10px;
     background: url("../images/logos/client.png") no-repeat
 }
 
@@ -12473,13 +12473,15 @@ a:hover {
 .team-box {
     min-height: 219px;
     text-align: center;
+    text-decoration: none;
     text-transform: uppercase;
     color: #fff;
     border-radius: 6px
 }
 
-.team-box a {
-    color: #fff
+.team-box a,a:hover,a:active {
+    color: #fff;
+    text-decoration: none;
 }
 
 .team-box>* {
@@ -14997,10 +14999,22 @@ body {
     width: 100%;
     margin-top: -63px;
     margin-bottom: 20px;
+
+    text-decoration: none;
     background: url("../images/footer-banner-bg.png") center;
     background-size: cover
 }
 
+.footer-banner a {
+
+    text-decoration: none;
+}
+
+
+.footer-banner a:hover,a:active {
+
+    text-decoration: none;
+}
 .footer .footer-banner>* {
     padding: 22px 33px 24px;
     display: flex;
@@ -15447,7 +15461,8 @@ body {
     }
 
     #content .block {
-        padding: 10px
+        padding: 10px;
+        text-decoration: none;
     }
 
     .teams-item>li {
