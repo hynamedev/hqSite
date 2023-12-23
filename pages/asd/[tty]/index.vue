@@ -7,28 +7,26 @@ const route = useRoute()
 const baseURL = 'http://localhost:8080'; // replace with your base URL
 const headers = {'MHQ-Authorization': 'website'};
 
-let user = reactive({ data: null});
+let user = reactive({ data: null });
 let userInfo = reactive({ data: null });
-let userGrants = reactive({ data: null });
+let userRank = reactive({ data: null });
+let rankInfo = reactive({ data: null });
 
 const response = await fetch(baseURL + "/lookup/byName", {
   method: 'POST',
   headers: headers,
   body: JSON.stringify({
-    names: route.params.user
+    names: [route.params.tty]
   })
 });
 
 
-console.log(JSON.stringify({
-  names: route.params.user
-}))
-
 if (response.ok) {
-  user.data = (await response.json())[route.params.user[0]];
+  user.data = (await response.json())[route.params.tty];
 
 
 } else {
+  console.log(response.json())
   console.error('Error:', response.status, await response.text()); // Log the status and response text
 }
 
@@ -41,11 +39,23 @@ const infoResponse = await fetch(baseURL + "/users/" + user.data.uuid + "/detail
 if (infoResponse.ok) {
   let json = await infoResponse.json();
   userInfo.data = json.user;
-  userGrants.data = json.grants;
-
+  userRank.data = json.grants[0];
 } else {
   console.error('Error:', infoResponse.status, await infoResponse.text()); // Log the status and response text
 }
+
+const rankResponse = await fetch(baseURL + "/ranks/" + userRank.data.rank, {
+  method: 'GET',
+  headers: headers,
+});
+
+if (rankResponse.ok) {
+  let json = await rankResponse.json();
+  rankInfo.data = json;
+} else {
+  console.error('Error:', rankResponse.status, await rankResponse.text()); // Log the status and response text
+}
+
 
 </script>
 
@@ -62,12 +72,12 @@ if (infoResponse.ok) {
         <div class="col-lg-3">
           <aside id="sidebar">
             <div class="box">
-<!--              <div class="banned-box" v-if="user">-->
-<!--                <span class="text">-->
-<!--                  <strong class="title">Banned</strong>-->
-<!--                  Last Seen <time datetime="1559509196295" data-format="ago" data-toggle="tooltip"></time>-->
-<!--                </span>-->
-<!--              </div>-->
+              <!--              <div class="banned-box" v-if="user">-->
+              <!--                <span class="text">-->
+              <!--                  <strong class="title">Banned</strong>-->
+              <!--                  Last Seen <time datetime="1559509196295" data-format="ago" data-toggle="tooltip"></time>-->
+              <!--                </span>-->
+              <!--              </div>-->
               <div class="online-box" v-if="userInfo.data.online">
                 <span class="text">
                   <strong class="title">Online</strong>
@@ -87,9 +97,8 @@ if (infoResponse.ok) {
                 <strong class="name">{{ user.data.username }}</strong>
               </div>
               <div class="premium-box">
-<!--                rank shit ig???? -->
-                <span class="btn btn-info" style="border-color: #AAAAAA; background-color: #AAAAAA; pointer-events:none; cursor: default;">
-                Default
+                <span class="btn btn-info" :style="'border-color: #' + rankInfo.data.websiteColor + '; background-color: #' + rankInfo.data.websiteColor + ' ; pointer-events:none; cursor: default;'">
+                {{ rankInfo.data.displayName }}
                 </span>
               </div>
             </div>
@@ -100,19 +109,14 @@ if (infoResponse.ok) {
                   First joined
                   <b><time :datetime="userInfo.data.firstSeenAt" data-format="date" data-toggle="tooltip"></time></b>
                 </li>
-                <li>
-                  <b>1 days</b>
-                  played
-                </li>
+
               </ul>
             </div>
             <div class="box profile-friends-box" data-url="/u/0698321465877836/friends-box">
               <strong class="heading">
-                0 friends
+                0 friends :(
               </strong>
               <div class="friends-box-plagin">
-              </div>
-              <div>
               </div>
             </div>
 
@@ -154,13 +158,78 @@ if (infoResponse.ok) {
                       </a>
                     </div>
                   </li>
+                  <li>
+                    <div class="team-box bg-06">
+                      <a :href="'/u/' + user.data.username + '/uhc'">
+                        <strong class="title">UHC</strong>
+                        <ul class="statistic-item">
+                          <li>
+                            No Games Played
+                          </li>
+                        </ul>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="team-box bg-03">
+                      <a :href="'/u/' + user.data.username + '/bunkers'">
+                        <strong class="title">Bunkers</strong>
+                        <ul class="statistic-item">
+                          <li>
+                            No Games Played
+                          </li>
+                        </ul>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="team-box bg-04">
+                      <a :href="'/u/' + user.data.username + '/meetup'">
+                        <strong class="title">Meetup</strong>
+                        <ul class="statistic-item">
+                          <li>
+                            No Games Played
+                          </li>
+                        </ul>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="team-box bg-05">
+                      <a :href="'/u/' + user.data.username + '/minesg'">
+                        <strong class="title">MineSG</strong>
+                        <ul class="statistic-item">
+                          <li>
+                            No Games Played
+                          </li>
+                        </ul>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="team-box bg-01">
+                      <a :href="'/u/' + user.data.username + '/kitmap'">
+                        <strong class="title">KitMap</strong>
+                        <ul class="statistic-item">
+                          <li>
+                            No Games Played
+                          </li>
+                        </ul>
+                      </a>
+                    </div>
+                  </li>
                 </ul>
               </div>
               <div class="block" id="comments" :data-url="'/u/' + user.data.username + '/comments'">
                 <section class="comments-block">
                   <h2>
-                    <i class="fa fa-comments" aria-hidden="true"></i> Comments
+                    <i class="fa fa-comments" aria-hidden="true"></i>
+                    Comments
                   </h2>
+                  <div class="alert alert-danger">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    You must be logged in to comment on {{ user.data.username }}'s profile.
+                  </div>
                 </section>
               </div>
             </div>
