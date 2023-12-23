@@ -39,8 +39,9 @@ const infoResponse = await fetch(baseURL + "/users/" + user.data.uuid + "/detail
 });
 
 if (infoResponse.ok) {
-  userInfo.data = (await infoResponse.json()).user;
-
+  let json = await infoResponse.json();
+  userInfo.data = json.user;
+  userGrants.data = json.grants;
 
 } else {
   console.error('Error:', infoResponse.status, await infoResponse.text()); // Log the status and response text
