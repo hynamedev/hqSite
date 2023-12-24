@@ -3,6 +3,7 @@ const route = useRoute()
 
 import Posts from "@/components/FeaturedPostsSection.vue";
 import {ref} from "vue";
+
 </script>
 
 

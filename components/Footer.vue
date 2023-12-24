@@ -1,10 +1,13 @@
 <script setup>
+import config from "~/siteConfig.js";
+
 defineProps({
   cb: {
     type: Boolean,
-    required: true
+    default: true
   }
 })
+
 </script>
 
 <template>
@@ -14,7 +17,7 @@ defineProps({
         <a href="https://cheatbreaker.com">
           <div class="banner-info">
             <div class="banner-logo">
-              <img src="../static/images/logos/client.png" width="64" height="58" alt="CheatBreaker Logo">
+              <img src="../static/images/logos/client.png" width="64" height="64" alt="CheatBreaker Logo">
             </div>
             <div class="banner-txt">
               <h2>CheatBreaker</h2>
@@ -33,12 +36,12 @@ defineProps({
         <div class="col-md-6">
           <ul class="social">
             <li>
-              <a href="https://twitter.com/minehq">
+              <a :href="'https://twitter.com/' + config.twitter">
                 <i class="fa fa-twitter" aria-hidden="true"></i>
               </a>
             </li>
             <li>
-              <a href="https://discordapp.com/invite/Pm2Zx7Y">
+              <a :href="config.discordInvite">
                 <img src="../static/images/discord.svg" alt="discord">
               </a>
             </li>

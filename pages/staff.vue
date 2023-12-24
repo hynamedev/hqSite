@@ -1,51 +1,50 @@
 <script setup>
-import Posts from "@/components/FeaturedPostsSection.vue";
-import {ref} from "vue";
+import config from "~/siteConfig.js";
+import {staffRankDataStore, staffRankNameStore, staffRanksStore} from "~/store/store.js";
 
 const route = useRoute()
 
+useSeoMeta({
+  title: 'Staff - ' + config.serverName,
+})
 
-const baseURL = 'http://localhost:8080'; // replace with your base URL
-const headers = {'MHQ-Authorization': 'website'};
+definePageMeta({
+  middleware: [
+    async function (to, from, next) {
+      if(process.client) return;
+      const baseURL = config.apiHost; // replace with your base URL
+      const headers = config.authHeader;
 
-
-let rankNames = null;
-
-let rankData = [];
-let ranks = [];
-
-const response = await fetch(baseURL + "/staff", {
-  method: 'GET',
-  headers: headers
-});
-
-
-if (response.ok) {
-  const json = await response.json();
-  rankData = json;
-  rankNames = Object.keys(json)
-
-  for(let i = 0; i < rankNames.length; i++) {
-      const rankResponse = await fetch(baseURL + "/ranks/" + rankNames[i], {
+      const response = await fetch(baseURL + "/staff", {
         method: 'GET',
         headers: headers
       });
 
-      if(rankResponse.ok) {
-        const rank = await rankResponse.json();
-        ranks.push(rank)
+      if (response.ok) {
+        const json = await response.json();
+        staffRankDataStore().data = json;
+        staffRankNameStore().data = Object.keys(json);
+
+        for(let i = 0; i < staffRankNameStore().data.length; i++) {
+          const rankResponse = await fetch(baseURL + "/ranks/" + staffRankNameStore().data[i], {
+            method: 'GET',
+            headers: headers
+          });
+
+          if(rankResponse.ok) {
+            const rank = await rankResponse.json();
+            staffRanksStore().data.push(rank)
+          } else {
+            console.error('Error:', rankResponse.status, await rankResponse.text()); // Log the status and response text
+          }
+        }
       } else {
-        console.error('Error:', rankResponse.status, await rankResponse.text()); // Log the status and response text
+        console.error('Error:', response.status, await response.text()); // Log the status and response text
       }
+    }
+  ]
+})
 
-  }
-
-
-
-
-} else {
-  console.error('Error:', response.status, await response.text()); // Log the status and response text
-}
 
 
 </script>
@@ -60,15 +59,17 @@ if (response.ok) {
       </div>
       <div class="staff-section">
         <section id="content">
-          <div class="block" v-for="rank in ranks">
+          <div class="block" v-for="rank in staffRanksStore().data">
             <h2 :style="'background-color: #' + rank.websiteColor">
               {{ rank.displayName }}
             </h2>
-            <ul class="staff-item">
-              <li v-for="user in rankData[rank.id]">
+            <ul :class="'staff-item' + (rank.id === 'owner' ? '' : ' item-small')">
+              <li v-for="user in staffRankDataStore().data[rank.id]">
                 <div class="user-box">
                   <a :href="'/u/' + user.lastUsername" class="link-box">
-                    <img :src="'https://visage.surgeplay.com/full/400/' + user.id + '.png'" :alt="user.lastUsername" height="124" width="55" style="transform: scale(1.2); object-fit: contain;" class="avatar-half">
+                    <div class="img-box" style="overflow: hidden">
+                      <img :src="'https://visage.surgeplay.com/bust/124/' + user.id + '.png'" :alt="user.lastUsername" height="124" width="124" style="object-fit: contain;" class="avatar-half">
+                    </div>
                     <span class="name"> {{ user.lastUsername }}</span>
                   </a>
                 </div>

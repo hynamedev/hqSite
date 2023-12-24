@@ -1,4 +1,5 @@
 <script setup>
+import {usernameStore, uuidStore} from "~/store/store.js";
 </script>
 
 <template>
@@ -63,20 +64,31 @@
                 </button>
               </div>
             </form>
-            <a class="nav-link" href="/login">Login</a>
-            <a class="nav-link" href="/register">Register</a>
+<!--            TODO LOGIN SHIT!! -->
+            <div class="dropdown account-dropdown" v-if="false">
+              <a :href="'/u/' + usernameStore().data">
+                <div class="user">
+                  <div class="user-info">
+                    <span class="sub-txt text-uppercase">Logged in as</span>
+                    <span class="user-name">{{ usernameStore().data }}</span>
+                  </div>
+                  <div class="user-avatar">
+                    <img :src="'https://visage.surgeplay.com/face/22/' + uuidStore().data" :alt="usernameStore().data" height="42" width="42" class="avatar-face">
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div style="display: flex" v-else>
+
+              <a class="nav-link" href="/login">Login</a>
+              <a class="nav-link" href="/register">Register</a>
+
+            </div>
+
           </div>
         </nav>
       </div>
     </div>
   </header>
 </template>
-
-<style scoped>
-@import "../static/css/bootstrap.css";
-@import "../static/css/font-awesome.css";
-@import "../static/css/fonts.css";
-@import "../static/css/schedule.css";
-@import "../static/css/style.css";
-
-</style>
+W

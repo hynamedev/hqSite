@@ -1,11 +1,22 @@
 <script setup>
-const route = useRoute()
+import config from "~/siteConfig.js";
+
 
 import Posts from "@/components/FeaturedPostsSection.vue";
-import {ref} from "vue";
+import { ref, onMounted } from "vue";
+import {
+  bannedStore,
+  playerCountStore,
+  punishmentStore,
+  rankInfoStore,
+  rankStore,
+  userInfoStore,
+  usernameStore,
+  uuidStore
+} from "~/store/store.js";
 
+const route = useRoute()
 let posts = ref([]);
-let onlinePlayers = ref(1)
 function getPosts() {
   posts = ref([{title: "a", content: "a", link: "a", postDate: 0, author: "tt"},
     {
@@ -17,26 +28,41 @@ function getPosts() {
     }]);
 }
 
+useSeoMeta({
+  title: config.serverName,
+})
 
-const baseURL = 'http://localhost:8080'; // replace with your base URL
-const headers = {'MHQ-Authorization': 'website'};
+definePageMeta({
+  middleware: [
+    async function (to, from, next) {
+      if(process.client) return;
+      const baseURL = config.apiHost; // replace with your base URL
+      const headers = config.authHeader;
 
-let servers = reactive({ data: null});
+      const response = await fetch(baseURL + "/serverGroups/default/playerCount", {
+        method: 'GET',
+        headers: headers
+      });
 
-const response = await fetch(baseURL + "/servers", {
-  method: 'GET',
-  headers: headers
+      if (response.ok) {
+        const json = await response.json();
+
+        playerCountStore().data = json.total
+      } else {
+        console.error('Error:', response.status, await response.text()); // Log the status and response text
+      }
+
+    }
+  ]
+})
+
+onMounted(() => {
+  let script = document.createElement('script');
+  script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+  script.setAttribute('charset', 'utf-8');
+  script.setAttribute('async', '');
+  document.head.appendChild(script);
 });
-
-if (response.ok) {
-  servers.data = (await response.json());
-
-  console.log(servers.data)
-
-} else {
-  console.error('Error:', response.status, await response.text()); // Log the status and response text
-}
-
 </script>
 
 
@@ -45,10 +71,8 @@ if (response.ok) {
       <main class="main">
         <div class="home-banner">
           <img src="/static/images/logos/logo.png" class="logo">
-          <h2>
-            <b>MineHQ</b> Network
-          </h2>
-          <h3>WHERE THE <b>BEST</b> PLAYERS PLAY</h3>
+          <h2 v-html="config.serverNameHtml"></h2>
+          <h3 v-html="config.slogan"></h3>
         </div>
         <div class="main-top">
           <div class="row">
@@ -62,17 +86,17 @@ if (response.ok) {
               </div>
             </div>
             <div class="main-top-col main-top-big">
-              <div class="main-top-content" v-if="onlinePlayers === 1">
-                There is currently {{ onlinePlayers }} player online
+              <div class="main-top-content" v-if="playerCountStore().data === 1">
+                There is currently {{ playerCountStore().data }} player online
               </div>
               <div class="main-top-content" v-else>
-                There are currently {{ onlinePlayers }} players online
+                There are currently {{ playerCountStore().data }} players online
               </div>
             </div>
 
             <div class="main-top-col">
               <div class="main-top-content main-top-button">
-                <a href="store" class="btn btn-danger">
+                <a href="/store" class="btn btn-danger">
                   <i class="fa fa-shopping-cart"></i>
                   <span>Visit the MineHQ Store</span>
                 </a>
@@ -95,11 +119,28 @@ if (response.ok) {
                   <a class="logo" href="https://discord.com?utm_source=Discord%20Widget&amp;utm_medium=Logo" target="_blank"></a>
                 </div>
                 <div class="inner-discord" style="height: 456px;overflow: hidden;">
-                  <iframe src="https://discord.com/widget?id=443523471578759221&theme=light" width="350" height="500" allowtransparency="true" frameborder="0" style="width: 100%"></iframe>
+                  <iframe :src="config.discordWidget + '&theme=light'" width="350" height="500" allowtransparency="true" frameborder="0" style="width: 100%"></iframe>
                 </div>
                 <div class="discord-widget-footer">
-                  <a href="/discord">
-                    DISCORD.GG/MINEHQ
+                  <a :href="config.discordInvite">
+                    {{ config.displayedDiscordInvite }}
+                  </a>
+                </div>
+              </div>
+
+              <div class="twitter-widget">
+                <div class="twitter-widget-header">
+                  <i class="fa fa-3x fa-twitter mr-2"></i>
+                  <span>
+                    <b>Latest Tweets</b>
+                   <br>
+                   From @{{ config.twitter }}
+                </span>
+                </div>
+                <a class="twitter-timeline" data-width="100%" data-height="500" data-chrome="noheader nofooter noborders transparent" data-dnt="true" :href="'https://twitter.com/' + config.twitter + '?ref_src=twsrc%5Etfw'"></a>
+                <div class="twitter-widget-footer">
+                  <a :href="'https://twitter.com/@' + config.twitter">
+                    View on Twitter
                   </a>
                 </div>
               </div>
