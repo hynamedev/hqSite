@@ -94,38 +94,28 @@ definePageMeta({
               <div class="block">
                 <ul class="nav nav-pills gamemode-item">
                   <li class="nav-item">
-                    <a href="/u/ImbredYeast/Practice" class="nav-link active ">
+                    <a :href="'/u/' + usernameStore().data + '/Practice'" class="nav-link active ">
                       Practice
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/u/ImbredYeast/uhc" class="nav-link ">
+                    <a :href="'/u/' + usernameStore().data + '/uhc'" class="nav-link ">
                       UHC
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/u/ImbredYeast/bunkers" class="nav-link ">
+                    <a :href="'/u/' + usernameStore().data + '/bunkers'" class="nav-link ">
                       Bunkers
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/u/ImbredYeast/meetup" class="nav-link ">
+                    <a :href="'/u/' + usernameStore().data + '/meetup'" class="nav-link ">
                       Meetup
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="/u/ImbredYeast/minesg" class="nav-link ">
+                    <a :href="'/u/'  +  usernameStore().data + '/minesg'" class="nav-link ">
                       MineSG
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/u/ImbredYeast/survivalgames" class="nav-link ">
-                      SurvivalGames
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/u/ImbredYeast/bedwars" class="nav-link ">
-                      Bedwars
                     </a>
                   </li>
                 </ul>
@@ -204,11 +194,11 @@ definePageMeta({
 
                           <div class="d-flex">
                             <div class="avatar">
-                              <img src="https://minotar.net/avatar/401202a3-0102-4ed8-979a-e5d4832c8a9b/40" alt="itsjhalt" height="40" width="40" class="avatar-face">
+                              <img src="https://minotar.net/avatar/eafa69eb-d5f1-4c34-9e91-2bbdd3356611/40" alt="ztxv" height="40" width="40" class="avatar-face">
                             </div>
                             <div>
                               <div>
-                                <strong>itsjhalt</strong>
+                                <strong>ztxv</strong>
                               </div>
                               <div>
                                 <span class="text-danger">Loser!</span>

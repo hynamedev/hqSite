@@ -106,7 +106,4 @@ definePageMeta({
       </div>
     </main>
   </div>
-
-
-
 </template>

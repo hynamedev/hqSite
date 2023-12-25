@@ -15,16 +15,18 @@ import $ from 'jquery'
 
     <NuxtPage />
 
-    <footer>
-      <Footer :cb=true />
-    </footer>
   </div>
+
+  <footer>
+    <Footer :cb=true />
+  </footer>
 </template>
 
 <style>
 
-@import "public/static/css/font-awesome.css";
-@import "public/static/css/fonts.css";
-@import "public/static/css/schedule.css";
+@import "/static/css/font-awesome.css";
+@import "/static/css/fonts.css";
+@import "/static/css/schedule.css";
+@import "/static/css/style.css";
 
 </style>

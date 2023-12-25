@@ -120,7 +120,7 @@ body {
     line-height: 1.2142857;
     color: #666;
     text-align: left;
-    background-color: #f5f5f5;
+    background-color: #f5f5f5
 }
 
 [tabindex="-1"]:focus {
@@ -207,7 +207,7 @@ sup {
 
 a {
     color: #6188b0;
-    text-decoration: none;
+    text-decoration: underline;
     background-color: transparent;
     -webkit-text-decoration-skip: objects
 }
@@ -2132,17 +2132,18 @@ select.form-control:focus::-ms-value {
 }
 
 .btn {
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 11px;
-    line-height: 15px;
-    text-transform: uppercase;
-    text-shadow: 0 1px 1px rgba(0,0,0,.17);
-    box-shadow: 0 0 1px 1px rgba(255,255,255,.32) inset;
-    border: 1px solid rgba(0,0,0,.32);
-    padding: 5px 7px;
-    color: rgba(255,255,255,.9);
-    letter-spacing: 1px
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
 }
 
 .btn:focus,.btn:hover {
@@ -2223,7 +2224,6 @@ a.btn.disabled,fieldset[disabled] a.btn {
 }
 
 .btn-success {
-    border-radius: 6px;
     color: #fff;
     background-color: #3cb152;
     border-color: #3cb152
@@ -2310,16 +2310,7 @@ a.btn.disabled,fieldset[disabled] a.btn {
 .btn-danger {
     color: #fff;
     background-color: #db4040;
-    border-color: #db4040;
-    font-weight: 700;
-}
-
-
-.btn-danger span {
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 1;
-    letter-spacing: 1.7px;
+    border-color: #db4040
 }
 
 .btn-danger:hover {
@@ -8027,8 +8018,8 @@ a.text-default:focus,a.text-default:hover {
 
 @font-face {
     font-family: FontAwesome;
-    src: url("../fonts/fontawesome-webfontd41d.eot?v=4.7.0");
-    src: url("../fonts/fontawesome-webfontd41d.eot#iefix&v=4.7.0") format('embedded-opentype'),url("../fonts/fontawesome-webfont3e6e.woff2?v=4.7.0") format('woff2'),url("../fonts/fontawesome-webfont3e6e.woff?v=4.7.0") format('woff'),url("../fonts/fontawesome-webfont3e6e.ttf?v=4.7.0") format('truetype'),url("../fonts/fontawesome-webfont3e6e.svg?v=4.7.0#fontawesomeregular") format('svg');
+    src: url(/static/fonts/fontawesome-webfont.eot?v=4.7.0);
+    src: url(/static/fonts/fontawesome-webfont.eot#iefix&v=4.7.0) format('embedded-opentype'),url(static/fonts/fontawesome-webfont.woff2?v=4.7.0) format('woff2'),url(https://www.minehq.com/static/fonts/fontawesome-webfont.woff?v=4.7.0) format('woff'),url(https://www.minehq.com/static/fonts/fontawesome-webfont.ttf?v=4.7.0) format('truetype'),url(/static/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format('svg');
     font-weight: 400;
     font-style: normal
 }
@@ -10990,7 +10981,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: italic;
     font-weight: 400;
-    src: local('Raleway Italic'),local('Raleway-Italic'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptsg8zYS_SKggPNyCg4Q4FqPfE.woff2) format('woff2');
+    src: local('Raleway Italic'),local('Raleway-Italic'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptsg8zYS_SKggPNyCg4Q4FqPfE.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -10998,7 +10989,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: italic;
     font-weight: 400;
-    src: local('Raleway Italic'),local('Raleway-Italic'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptsg8zYS_SKggPNyCg4TYFq.woff2) format('woff2');
+    src: local('Raleway Italic'),local('Raleway-Italic'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptsg8zYS_SKggPNyCg4TYFq.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11006,7 +10997,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: italic;
     font-weight: 600;
-    src: local('Raleway SemiBold Italic'),local('Raleway-SemiBoldItalic'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptpg8zYS_SKggPNyCgwkqV_DNCb_Vo.woff2) format('woff2');
+    src: local('Raleway SemiBold Italic'),local('Raleway-SemiBoldItalic'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptpg8zYS_SKggPNyCgwkqV_DNCb_Vo.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11014,7 +11005,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: italic;
     font-weight: 600;
-    src: local('Raleway SemiBold Italic'),local('Raleway-SemiBoldItalic'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptpg8zYS_SKggPNyCgwkqV_AtCb.woff2) format('woff2');
+    src: local('Raleway SemiBold Italic'),local('Raleway-SemiBoldItalic'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptpg8zYS_SKggPNyCgwkqV_AtCb.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11022,7 +11013,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 300;
-    src: local('Raleway Light'),local('Raleway-Light'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIYqWqhPAMif.woff2) format('woff2');
+    src: local('Raleway Light'),local('Raleway-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIYqWqhPAMif.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11030,7 +11021,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 300;
-    src: local('Raleway Light'),local('Raleway-Light'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIYqWqZPAA.woff2) format('woff2');
+    src: local('Raleway Light'),local('Raleway-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIYqWqZPAA.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11038,7 +11029,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 400;
-    src: local('Raleway'),local('Raleway-Regular'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');
+    src: local('Raleway'),local('Raleway-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptug8zYS_SKggPNyCMIT5lu.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11046,7 +11037,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 400;
-    src: local('Raleway'),local('Raleway-Regular'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
+    src: local('Raleway'),local('Raleway-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptug8zYS_SKggPNyC0ITw.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11054,7 +11045,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 500;
-    src: local('Raleway Medium'),local('Raleway-Medium'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwN4rWqhPAMif.woff2) format('woff2');
+    src: local('Raleway Medium'),local('Raleway-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwN4rWqhPAMif.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11062,7 +11053,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 500;
-    src: local('Raleway Medium'),local('Raleway-Medium'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwN4rWqZPAA.woff2) format('woff2');
+    src: local('Raleway Medium'),local('Raleway-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwN4rWqZPAA.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11070,7 +11061,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 600;
-    src: local('Raleway SemiBold'),local('Raleway-SemiBold'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwPIsWqhPAMif.woff2) format('woff2');
+    src: local('Raleway SemiBold'),local('Raleway-SemiBold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwPIsWqhPAMif.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11078,7 +11069,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 600;
-    src: local('Raleway SemiBold'),local('Raleway-SemiBold'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwPIsWqZPAA.woff2) format('woff2');
+    src: local('Raleway SemiBold'),local('Raleway-SemiBold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwPIsWqZPAA.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11086,7 +11077,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 700;
-    src: local('Raleway Bold'),local('Raleway-Bold'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwJYtWqhPAMif.woff2) format('woff2');
+    src: local('Raleway Bold'),local('Raleway-Bold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwJYtWqhPAMif.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11094,7 +11085,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 700;
-    src: local('Raleway Bold'),local('Raleway-Bold'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwJYtWqZPAA.woff2) format('woff2');
+    src: local('Raleway Bold'),local('Raleway-Bold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwJYtWqZPAA.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11102,7 +11093,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 800;
-    src: local('Raleway ExtraBold'),local('Raleway-ExtraBold'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIouWqhPAMif.woff2) format('woff2');
+    src: local('Raleway ExtraBold'),local('Raleway-ExtraBold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIouWqhPAMif.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11110,7 +11101,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Raleway;
     font-style: normal;
     font-weight: 800;
-    src: local('Raleway ExtraBold'),local('Raleway-ExtraBold'),url(https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIouWqZPAA.woff2) format('woff2');
+    src: local('Raleway ExtraBold'),local('Raleway-ExtraBold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/raleway/v12/1Ptrg8zYS_SKggPNwIouWqZPAA.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11118,7 +11109,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    src: local('Roboto Light'),local('Roboto-Light'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
+    src: local('Roboto Light'),local('Roboto-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');
     unicode-range: U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F
 }
 
@@ -11126,7 +11117,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    src: local('Roboto Light'),local('Roboto-Light'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');
+    src: local('Roboto Light'),local('Roboto-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');
     unicode-range: U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116
 }
 
@@ -11134,7 +11125,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    src: local('Roboto Light'),local('Roboto-Light'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
+    src: local('Roboto Light'),local('Roboto-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');
     unicode-range: U+1F00-1FFF
 }
 
@@ -11142,7 +11133,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    src: local('Roboto Light'),local('Roboto-Light'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
+    src: local('Roboto Light'),local('Roboto-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');
     unicode-range: U+0370-03FF
 }
 
@@ -11150,7 +11141,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    src: local('Roboto Light'),local('Roboto-Light'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');
+    src: local('Roboto Light'),local('Roboto-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');
     unicode-range: U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB
 }
 
@@ -11158,7 +11149,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    src: local('Roboto Light'),local('Roboto-Light'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
+    src: local('Roboto Light'),local('Roboto-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11166,7 +11157,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    src: local('Roboto Light'),local('Roboto-Light'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
+    src: local('Roboto Light'),local('Roboto-Light'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11174,7 +11165,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');
+    src: local('Roboto'),local('Roboto-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');
     unicode-range: U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F
 }
 
@@ -11182,7 +11173,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+    src: local('Roboto'),local('Roboto-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
     unicode-range: U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116
 }
 
@@ -11190,7 +11181,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
+    src: local('Roboto'),local('Roboto-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
     unicode-range: U+1F00-1FFF
 }
 
@@ -11198,7 +11189,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
+    src: local('Roboto'),local('Roboto-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
     unicode-range: U+0370-03FF
 }
 
@@ -11206,7 +11197,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');
+    src: local('Roboto'),local('Roboto-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');
     unicode-range: U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB
 }
 
@@ -11214,7 +11205,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+    src: local('Roboto'),local('Roboto-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11222,7 +11213,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+    src: local('Roboto'),local('Roboto-Regular'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11230,7 +11221,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fCRc4EsA.woff2) format('woff2');
+    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fCRc4EsA.woff2) format('woff2');
     unicode-range: U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F
 }
 
@@ -11238,7 +11229,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fABc4EsA.woff2) format('woff2');
+    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fABc4EsA.woff2) format('woff2');
     unicode-range: U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116
 }
 
@@ -11246,7 +11237,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fCBc4EsA.woff2) format('woff2');
+    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fCBc4EsA.woff2) format('woff2');
     unicode-range: U+1F00-1FFF
 }
 
@@ -11254,7 +11245,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBxc4EsA.woff2) format('woff2');
+    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBxc4EsA.woff2) format('woff2');
     unicode-range: U+0370-03FF
 }
 
@@ -11262,7 +11253,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fCxc4EsA.woff2) format('woff2');
+    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fCxc4EsA.woff2) format('woff2');
     unicode-range: U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB
 }
 
@@ -11270,7 +11261,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fChc4EsA.woff2) format('woff2');
+    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fChc4EsA.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11278,7 +11269,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
-    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+    src: local('Roboto Medium'),local('Roboto-Medium'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
     unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD
 }
 
@@ -11286,7 +11277,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2) format('woff2');
+    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2) format('woff2');
     unicode-range: U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F
 }
 
@@ -11294,7 +11285,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2) format('woff2');
+    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2) format('woff2');
     unicode-range: U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116
 }
 
@@ -11302,7 +11293,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2) format('woff2');
+    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2) format('woff2');
     unicode-range: U+1F00-1FFF
 }
 
@@ -11310,7 +11301,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2) format('woff2');
+    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2) format('woff2');
     unicode-range: U+0370-03FF
 }
 
@@ -11318,7 +11309,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2) format('woff2');
+    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2) format('woff2');
     unicode-range: U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB
 }
 
@@ -11326,7 +11317,7 @@ a.text-default:focus,a.text-default:hover {
     font-family: Roboto;
     font-style: normal;
     font-weight: 700;
-    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2) format('woff2');
+    src: local('Roboto Bold'),local('Roboto-Bold'),url(https://web.archive.org/web/20180804130836im_/https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2) format('woff2');
     unicode-range: U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF
 }
 
@@ -11561,14 +11552,9 @@ body>.jcf-select-drop.jcf-drop-flipped {
     border-color: red!important
 }
 
-
 .header {
     background: #fff;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.23);
-}
-
-.header a {
-    text-decoration: none;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.23)
 }
 
 .navbar-expand-lg {
@@ -11733,15 +11719,13 @@ body>.jcf-select-drop.jcf-drop-flipped {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    width: calc(100% - 14px);
-    width: 100%
+    width: calc(100% - 14px)
 }
 
 .navbar-expand-lg .account-dropdown .user .user-info {
     padding-right: 8px;
     padding-top: 1px;
     width: calc(100% - 22px)
-
 }
 
 .navbar-expand-lg .account-dropdown .user span {
@@ -11752,9 +11736,9 @@ body>.jcf-select-drop.jcf-drop-flipped {
 
 .navbar-expand-lg .account-dropdown .user span.sub-txt {
     font-size: 6px;
-    color: #1b1b1b, .39;
+    color: #1b1b1b,.39;
     letter-spacing: .3px;
-    font-weight: 700;
+    font-weight: 700
 }
 
 .navbar-expand-lg .account-dropdown .user span.user-name {
@@ -11762,6 +11746,7 @@ body>.jcf-select-drop.jcf-drop-flipped {
     color: #404040;
     letter-spacing: 1.1px;
     font-weight: 800;
+    padding-right: 12px
 }
 
 .navbar-expand-lg .account-dropdown .user .user-avatar {
@@ -12063,10 +12048,6 @@ a:hover {
     padding: 25px 0 14px
 }
 
-.user-box a {
-    text-decoration: none;
-}
-
 .user-box .img-box {
     width: 172px;
     height: 172px;
@@ -12086,7 +12067,7 @@ a:hover {
     width: 100%;
     height: 100%;
     border-radius: 100%;
-    margin-top: 9px;
+    border: 2px solid #fff
 }
 
 .user-box .name {
@@ -12330,35 +12311,35 @@ a:hover {
     opacity: .6
 }
 
-
-
-.punishment-btn{
-    font-size:12px;
-    line-height:14px;
-    display:block;
-    color:#f9f1f2;
-    background:#c24a58;
-    white-space:normal;
-    text-align:left;
-    letter-spacing:1.2px;
-    padding:4px 7px;
-    margin:0 0 15px;
-    padding-left:66px;
-    position:relative
+.punishment-btn {
+    font-size: 12px;
+    line-height: 14px;
+    display: block;
+    color: #f9f1f2;
+    background: #c24a58;
+    white-space: normal;
+    text-align: left;
+    letter-spacing: 1.2px;
+    padding: 4px 7px;
+    margin: 0 0 15px;
+    padding-left: 66px;
+    position: relative
 }
-.punishment-btn:active,.punishment-btn:focus,.punishment-btn:hover{
-    background:#c24a58!important;
-    border-color:rgba(0,0,0,.32)!important;
-    opacity:.9
+
+.punishment-btn:active,.punishment-btn:focus,.punishment-btn:hover {
+    background: #c24a58!important;
+    border-color: rgba(0,0,0,.32)!important;
+    opacity: .9
 }
-.punishment-btn:before{
-    width:42px;
-    height:55px;
-    content:"";
-    position:absolute;
-    left:16px;
-    top:-10px;
-    background: url("../images/logos/client.png") no-repeat
+
+.punishment-btn:before {
+    width: 42px;
+    height: 55px;
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: -10px;
+    background: url(/static/images/logos/client.png) no-repeat
 }
 
 .tabs-section h2 {
@@ -12376,7 +12357,7 @@ a:hover {
 }
 
 .ajax-tabs-loading .ajax-holder {
-    background: url("../images/spinner.gif") no-repeat 50% 50%
+    background: url(/static/images/spinner.gif) no-repeat 50% 50%
 }
 
 .nav-tabs {
@@ -12386,8 +12367,6 @@ a:hover {
 .admin-tab {
     color: #cd5c5c!important
 }
-
-
 
 .gamemode-item,.tab-item {
     text-transform: uppercase;
@@ -12428,16 +12407,6 @@ a:hover {
     text-shadow: 0 0 1px rgba(0,0,0,.27);
     box-shadow: 0 1px 1px 1px rgba(0,0,0,.08) inset;
     color: #fff
-}
-
-a.admin-tab.active {
-    background-image: -webkit-linear-gradient(top, #cd5c5c 0,#803939 100%);
-    background-image: linear-gradient(to bottom,#cd5c5c 0,#803939 100%);
-    background-repeat: repeat-x;
-    text-shadow: 0 0 1px rgba(0,0,0,.27);
-    box-shadow: 0 1px 1px 1px rgba(0,0,0,.08) inset;
-
-    color: #eeeeee !important
 }
 
 .gamemode-item li,.tab-item li {
@@ -12486,15 +12455,13 @@ a.admin-tab.active {
 .team-box {
     min-height: 219px;
     text-align: center;
-    text-decoration: none;
     text-transform: uppercase;
     color: #fff;
     border-radius: 6px
 }
 
-.team-box a,a:hover,a:active {
-    color: #fff;
-    text-decoration: none;
+.team-box a {
+    color: #fff
 }
 
 .team-box>* {
@@ -13530,17 +13497,11 @@ body {
 }
 
 #wrapper {
-    width: 100vw;
-    display: table-cell;
-    min-height: 100vh;
+    display: table-cell
 }
 
-
 .main {
-    padding-bottom: 90px;
-
-    /*padding-bottom: calc(100vh - 60%)*/
-    /*!*min-height: ;*!*/
+    padding-bottom: 90px
 }
 
 .bg-stretch {
@@ -13555,7 +13516,7 @@ body {
 }
 
 .tab-bg-stretch {
-    background-image: url(../images/category-bg.png)
+    background-image: url(/static/images/category-bg.png)
 }
 
 .main-top {
@@ -13565,14 +13526,12 @@ body {
 .main-top .main-top-col {
     width: 28.8%;
     padding: 0 7.5px;
-    text-decoration: none;
     margin-bottom: 13px
 }
 
 .main-top .main-top-col .main-top-content {
     background: #fff;
     border-radius: 5px;
-    text-decoration: none;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.13);
     color: rgba(38,38,38,.75);
     font-size: 12px;
@@ -13597,7 +13556,6 @@ body {
 }
 
 .main-top .main-top-col .main-top-content a {
-    text-decoration: none;
     -webkit-transition: opacity .3s ease-in-out;
     transition: opacity .3s ease-in-out;
     color: rgba(38,38,38,.75);
@@ -13716,9 +13674,6 @@ body {
     padding: 12px 12px 0
 }
 
-.post-item a {
-    text-decoration: none;
-}
 .news .post-item .post-header {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -13846,7 +13801,7 @@ body {
     -webkit-transition: opacity .3s ease-in-out;
     transition: opacity .3s ease-in-out;
     width: 100%;
-    background-image: url("../images/btn-bg.png");
+    background-image: url(/static/images/btn-bg.png);
     background-size: cover;
     border-radius: 0 0 5px 5px;
     padding: 7px 10px 6px;
@@ -14166,12 +14121,7 @@ body {
 }
 
 .forum {
-    margin-bottom: 107px;
-    text-decoration: none;
-}
-
-.forum a {
-    text-decoration: none;
+    margin-bottom: 107px
 }
 
 .forum .forum-tools {
@@ -14285,7 +14235,12 @@ body {
     margin-bottom: 30px;
     height: 168px;
     white-space: nowrap;
-    text-align: center
+    text-align: center;
+
+}
+
+#stretch-background {
+    background-image: url(/static/images/login-header.png);
 }
 
 .login .login-header:before,.registration .login-header:before {
@@ -14783,10 +14738,6 @@ body {
     border: 1px solid rgba(0,0,0,.1)
 }
 
-#stretch-background {
-    background-image: url(../images/login-header.png)
-}
-
 .block-sections .bg-stretch:after {
     position: absolute;
     left: 0;
@@ -14883,7 +14834,7 @@ body {
 .block-sections .register-link {
     display: inline-block;
     vertical-align: top;
-    background: url(../images/bg-email.png) no-repeat;
+    background: url(/static/images/bg-email.png) no-repeat;
     background-size: cover;
     color: #fff!important;
     font-size: 14px;
@@ -14960,7 +14911,7 @@ body {
 }
 
 .purchase-block ul li:before {
-    content: "â€¢";
+    content: "•";
     display: inline-block;
     vertical-align: top;
     margin: 0 4px 0 0
@@ -15002,35 +14953,20 @@ body {
 .footer {
     background: #262626;
     margin-top: 91px;
+    overflow: revert;
     display: flex;
     height: 1%;
-    width: 100%;
-
-}
-
-.footer a {
-    text-decoration: none;
+    width: 100%
 }
 
 .footer .footer-banner {
     width: 100%;
     margin-top: -63px;
     margin-bottom: 20px;
-
-    text-decoration: none;
-    background: url("../images/footer-banner-bg.png") center;
-    background-size: cover;
+    background: url(/static/images/footer-banner-bg.png) center;
+    background-size: cover
 }
 
-.footer-banner a {
-    text-decoration: none;
-}
-
-
-.footer-banner a:hover,a:active {
-
-    text-decoration: none;
-}
 .footer .footer-banner>* {
     padding: 22px 33px 24px;
     display: flex;
@@ -15060,7 +14996,6 @@ body {
 
 .footer .footer-banner .banner-info .banner-txt {
     width: calc(100% - 71px);
-    font-weight: 300;
     padding-left: 10px;
     padding-top: 16px
 }
@@ -15181,7 +15116,7 @@ body {
 
 @media(-webkit-min-device-pixel-ratio: 1.5),(min-resolution:144dpi) {
     .punishment-btn:before {
-        background:url("../images/logos/client.png") no-repeat;
+        background:url(/static/images/logos/client.png) no-repeat;
         background-size: 42px 55px
     }
 }
@@ -15352,11 +15287,10 @@ body {
     }
 
     .news .post-item .post-header .title {
-        text-decoration: none;
-        width: 75%;
+        width: 75%
     }
 
-        .news .post-item .post-header .post-icons {
+    .news .post-item .post-header .post-icons {
         width: 25%
     }
 
@@ -15478,8 +15412,7 @@ body {
     }
 
     #content .block {
-        padding: 10px;
-        text-decoration: none;
+        padding: 10px
     }
 
     .teams-item>li {
@@ -15568,7 +15501,7 @@ body {
     }
 
     .main {
-        padding-bottom: 110px;
+        padding-bottom: 110px
     }
 
     .main-top .main-top-col {
@@ -15666,7 +15599,6 @@ body {
     }
 
     .footer .footer-banner .banner-info {
-
         width: 100%;
         margin-bottom: 10px
     }
@@ -16173,52 +16105,52 @@ body {
 }
 
 .bg-01 {
-    background: url(../images/hcteams-01.png) center;
+    background: url(/static/images/hcteams-01.png) center;
     background-size: cover
 }
 
 .bg-02 {
-    background: url(../images/hcteams-02.png) center;
+    background: url(/static/images/hcteams-02.png) center;
     background-size: cover
 }
 
 .bg-03 {
-    background: url(../images/hcteams-03.png) center;
+    background: url(/static/images/hcteams-03.png) center;
     background-size: cover
 }
 
 .bg-04 {
-    background: url(../images/hcteams-04.png) center;
+    background: url(/static/images/hcteams-04.png) center;
     background-size: cover
 }
 
 .bg-05 {
-    background: url(../images/hcteams-05.png) center;
+    background: url(/static/images/hcteams-05.png) center;
     background-size: cover
 }
 
 .bg-06 {
-    background: url(../images/hcteams-06.png) center;
+    background: url(/static/images/hcteams-06.png) center;
     background-size: cover
 }
 
 .bg-07 {
-    background: url(../images/hcteams-07.png) center;
+    background: url(/static/images/hcteams-07.png) center;
     background-size: cover
 }
 
 .bg-08 {
-    background: url(../images/hcteams-08.png) center;
+    background: url(/static/images/hcteams-08.png) center;
     background-size: cover
 }
 
 .bg-09 {
-    background: url(../images/hcteams-09.png) center;
+    background: url(/static/images/hcteams-09.png) center;
     background-size: cover
 }
 
 .profile-header {
-    background: url("../images/user-bg.jpg") center;
+    background: url(/static/images/user-bg.jpg) center;
     background-size: cover;
     margin: 15px 0;
     text-align: center;
@@ -16258,7 +16190,7 @@ body {
 
 .recent-games li {
     color: #fff;
-    background: url("../images/banner.png") center;
+    background: url(/static/images/banner.png) center;
     background-size: cover;
     margin-bottom: 15px;
     border-radius: 6px;
@@ -16366,7 +16298,7 @@ body {
 }
 
 .forum-list thead,.thread-list thead {
-    background: url("../images/category-bg.png") center;
+    background: url(/static/images/category-bg.png) center;
     background-size: cover;
     color: #fff;
     letter-spacing: 1px
@@ -16559,7 +16491,7 @@ body {
 
 .home-banner {
     height: 345px;
-    background: #492337 url("../images/home-banner.jpg") center;
+    background: #492337 url(/static/images/home-banner.jpg) center;
     background-size: cover;
     text-align: center;
     border-radius: 0 0 5px 5px
@@ -16672,15 +16604,7 @@ body {
 }
 
 .discord-widget {
-    width: 100%;
-    box-shadow: 0 1px 2px rgba(0,0,0,.13);
-    position: relative;
-}
-
-
-.discord-widget iframe {
-    width: 100%;
-    height: 500px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.13)
 }
 
 .discord-widget ::-webkit-scrollbar {
@@ -16705,9 +16629,6 @@ body {
     align-items: center;
     background-color: #7289da;
     display: flex;
-    position: absolute;
-    top:0;
-    width: 100%;
     flex-shrink: 0;
     padding: 20px;
     border-top-right-radius: 5px;
@@ -16718,7 +16639,7 @@ body {
 }
 
 .discord-widget-header .logo {
-    background: url(../images/discord-text.svg) 50% no-repeat;
+    background: url(/static/images/discord-text.svg) 50% no-repeat;
     background-size: 124px 34px;
     display: inline-block;
     height: 34px;
@@ -16791,67 +16712,12 @@ body {
     padding: 10px 20px;
     display: block;
     text-transform: uppercase;
-    text-decoration: none;
     text-shadow: 0 1px 1px rgba(0,0,0,.17);
     font-size: 12px
 }
 
 .discord-widget-footer a:hover {
-    color: #fff;
-    text-decoration: none;
     opacity: .6
-}
-
-.twitter-timeline {
-    margin-bottom: -4px !important;
-    background-color: white;
-}
-
-.twitter-widget {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .13);
-    margin-top: 13px;
-}
-
-.twitter-widget-header {
-    align-items: center;
-    background-color: #44a1e3;
-    display: flex;
-    flex-shrink: 0;
-    padding: 20px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    color: #fff;
-    box-shadow: 0 0 1px 1px rgba(255, 255, 255, .32) inset;
-    border: 1px solid rgba(0, 0, 0, .32);
-    font-size: smaller;
-}
-
-.twitter-widget-header > span > b {
-    font-size: medium;
-}
-
-.twitter-widget-footer {
-    background-color: #44a1e3;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    text-align: center;
-    box-shadow: 0 0 1px 1px rgba(255, 255, 255, .32) inset;
-    border: 1px solid rgba(0, 0, 0, .32);
-}
-
-.twitter-widget-footer a {
-    color: #fff;
-    font-weight: 700;
-    transition: opacity .25s ease-out;
-    padding: 10px 20px;
-    display: block;
-    text-transform: uppercase;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, .17);
-    font-size: 12px;
-}
-
-.twitter-widget-footer a:hover {
-    opacity: .6;
 }
 
 .avatar-face {
@@ -16948,7 +16814,7 @@ body {
 }
 
 .table-header-bg thead {
-    background: url(../images/category-bg.png) center;
+    background: url(/static/images/category-bg.png) center;
     background-size: cover;
     color: #fff;
     letter-spacing: 1px
@@ -16959,7 +16825,7 @@ body {
 }
 
 .match-header {
-    background: url(../images/banner.png) center;
+    background: url(/static/images/banner.png) center;
     background-size: cover;
     color: #fff;
     margin-bottom: 15px;
@@ -17033,3 +16899,5 @@ body {
 .uhc-config-item:target,.uhc-game-item:target {
     background-color: #fdead6
 }
+
+
