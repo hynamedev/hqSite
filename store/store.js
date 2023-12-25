@@ -101,3 +101,11 @@ export const kitStore = defineStore({
   }),
 });
 
+
+export const isPostStore = defineStore({
+  id: 'isPost',
+  state: () => ({
+    data: undefined
+  }),
+});
+
