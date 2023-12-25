@@ -13,7 +13,7 @@ const props = defineProps({
     required: true
   },
   postDate: {
-    type: String,
+    type: Number,
     required: true
   },
   link: {
@@ -21,6 +21,24 @@ const props = defineProps({
     required: true
   }
 })
+
+const formatTimeAgo = (date) => {
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - new Date(date)) / 1000);
+
+  const minutes = Math.floor(diffInSeconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(days / 365);
+
+  if (years > 0) return `${years} ${years > 1 ? 'Years' : 'Year'} Ago`;
+  if (months > 0) return `${months} ${months > 1 ? 'Months' : 'Month'} Ago`;
+  if (days > 0) return `${days} ${days > 1 ? 'Days' : 'Day'} Ago`;
+  if (hours > 0) return `${hours} ${hours > 1 ? 'Hours' : 'Hour'} Ago`;
+  if (minutes > 0) return `${minutes} ${minutes > 1 ? 'Minutes' : 'Minute'} Ago`;
+  return 'Just Now';
+};
 </script>
 
 <template>
@@ -34,17 +52,15 @@ const props = defineProps({
           <span class="author">
             <a :href="'u/' + props.author">{{ props.author }}</a>
 																										</span>
-          <time :datetime="props.postDate" data-format="ago" data-toggle="tooltip"></time>
+          {{ formatTimeAgo(props.postDate) }}
         </div>
       </div>
       <div class="post-body">
-        <p>
-          {{ props.content }}
-        </p>
+        <p v-html="props.content"></p>
       </div>
       <div class="btn-holder">
         <a :href="'/forums/' + props.link + '/'" class="btn">
-          <b>Read more...</b>
+          Read more...
         </a>
       </div>
     </div>

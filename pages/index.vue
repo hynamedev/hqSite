@@ -4,8 +4,9 @@ import config from "~/siteConfig.js";
 
 import Posts from "@/components/FeaturedPostsSection.vue";
 import { ref, onMounted } from "vue";
+import mongo, {readFeaturedPosts} from '~/mongoConnection.js'
 import {
-  bannedStore,
+  bannedStore, featuredPostsStore,
   playerCountStore,
   punishmentStore,
   rankInfoStore,
@@ -16,17 +17,6 @@ import {
 } from "~/store/store.js";
 
 const route = useRoute()
-let posts = ref([]);
-function getPosts() {
-  posts = ref([{title: "a", content: "a", link: "a", postDate: 0, author: "tt"},
-    {
-      title: "b",
-      content: "b",
-      link: "ac",
-      postDate: 0,
-      author: "tt"
-    }]);
-}
 
 useSeoMeta({
   title: config.serverName,
@@ -52,6 +42,7 @@ definePageMeta({
         console.error('Error:', response.status, await response.text()); // Log the status and response text
       }
 
+      featuredPostsStore().data = (await mongo.readFeaturedPosts()).reverse();
     }
   ]
 })
@@ -104,9 +95,8 @@ onMounted(() => {
       <div class="news">
         <div class="row">
 
-          {{ getPosts() }}
 
-          <Posts :posts=posts></Posts>
+          <Posts :posts="featuredPostsStore().data"></Posts>
 
 
           <div class="col-lg-4">

@@ -10,7 +10,7 @@ import {
   bannedStore, playerStatsStore,
   punishmentStore,
   rankInfoStore,
-  rankStore,
+  rankStore, teamStatsStore,
   userInfoStore,
   usernameStore,
   uuidStore
@@ -97,7 +97,10 @@ definePageMeta({
             <div class="tabs-section">
               <ProfileTabs :username-parameter="usernameStore().data" :loggedInStaff="false" selectedTab="general"/>
 
-              <GeneralUserInfo :username-parameter="usernameStore().data" :uuid-parameter="uuidStore().data" :practice-stats="playerStatsStore().data"/>
+              <GeneralUserInfo :username-parameter="usernameStore().data"
+                               :uuid-parameter="uuidStore().data"
+                               :practice-stats="playerStatsStore().data"
+                               :team-stats="teamStatsStore().data"/>
 
               <ProfileComments :username-parameter="usernameStore().data"/>
             </div>

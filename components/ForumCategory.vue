@@ -1,10 +1,33 @@
 <script setup>
 const props = defineProps({
-  id: {
-    type: String,
+  forum: {
+    type: Object,
+    required: true
+  },
+  topPosts: {
+    type: Array,
     required: true
   }
 })
+
+
+const formatTimeAgo = (date) => {
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - new Date(date)) / 1000);
+
+  const minutes = Math.floor(diffInSeconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(days / 365);
+
+  if (years > 0) return `${years} ${years > 1 ? 'Years' : 'Year'} Ago`;
+  if (months > 0) return `${months} ${months > 1 ? 'Months' : 'Month'} Ago`;
+  if (days > 0) return `${days} ${days > 1 ? 'Days' : 'Day'} Ago`;
+  if (hours > 0) return `${hours} ${hours > 1 ? 'Hours' : 'Hour'} Ago`;
+  if (minutes > 0) return `${minutes} ${minutes > 1 ? 'Minutes' : 'Minute'} Ago`;
+  return 'Just Now';
+};
 </script>
 
 <template>
@@ -15,14 +38,14 @@ const props = defineProps({
           <div class="forum-tools">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="https://www.lunar.gg/forums">
+                <a href="/forums">
                   <i class="fa fa-home"></i>
                   Forums
                 </a>
               </li>
               <li class="breadcrumb-item">
-                <a href="https://www.lunar.gg/forums/official-events">
-                  Official Events
+                <a :href="'/forums/' + props.forum._id">
+                  {{ props.forum.displayName }}
                 </a>
               </li>
             </ol>
@@ -32,18 +55,18 @@ const props = defineProps({
                   Hot
                 </button>
                 <div class="dropdown-menu">
-                  <a href="https://www.lunar.gg/forums/official-events" class="dropdown-item">
+                  <a :href="'/forums/' +  + props.forum._id" class="dropdown-item">
                     Hot
                   </a>
-                  <a href="https://www.lunar.gg/forums/official-events/top" class="dropdown-item">
+                  <a :href="'/forums/'  + props.forum._id + '/top'" class="dropdown-item">
                     Top
                   </a>
-                  <a href="https://www.lunar.gg/forums/official-events/new" class="dropdown-item">
+                  <a :href="'/forums/'  + props.forum._id + '/new'" class="dropdown-item">
                     New
                   </a>
                 </div>
               </div>
-              <a href="https://www.lunar.gg/forums/new/official-events" class="btn btn-success">
+              <a :href="'/forums/new/official-events'  + props.forum._id" class="btn btn-success">
                 New Post
               </a>
             </div>
@@ -53,7 +76,7 @@ const props = defineProps({
             <tr>
               <th colspan="2">
                 <h3>
-                  Official Events
+                  {{ props.forum.displayName }}
                 </h3>
               </th>
               <th>Replies</th>
@@ -61,91 +84,33 @@ const props = defineProps({
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr v-for="post in props.topPosts">
               <td>
-<span class="upvotes ">
-46
-</span>
+              <span class="upvotes ">
+              {{ post.upDoots }}
+              </span>
               </td>
               <td>
                 <h3>
-                  <a href="https://www.lunar.gg/forums/66526/upcoming-faction-tournament" class="break-word">
-                    Upcoming Faction Tournament
+                  <a :href="'/forums/' + post._id" class="break-word">
+                    {{ post.title }}
                   </a>
                 </h3>
                 <div>
                   By
-                  <a href="https://www.lunar.gg/u/james_is_awesome">
-<span class="name-color-platform-admin">
-james_is_awesome,
-</span>
+                  <a :href="'/u/' + post.author.name">
+                    <span class="name-color-platform-admin">
+                    {{ post.author.name }}
+                    </span>
                   </a>
-                  <time datetime="1560359731231" data-format="ago" data-toggle="tooltip" data-original-title="1:15 PM Jun 12 2019">4 years ago</time>
+                  {{ formatTimeAgo(post.postDate) }}
                 </div>
               </td>
               <td>
-                38
+                {{ post.replies.length }}
               </td>
               <td>
-                <time datetime="1560541518762" data-format="ago" data-toggle="tooltip" data-original-title="3:45 PM Jun 14 2019">4 years ago</time>
-              </td>
-            </tr>
-            <tr>
-              <td>
-<span class="upvotes ">
-64
-</span>
-              </td>
-              <td>
-                <h3>
-                  <a href="https://www.lunar.gg/forums/78861/practice-10v10-tournament-2-ban-wave" class="break-word">
-                    Practice 10v10 Tournament #2 + Ban Wave
-                  </a>
-                </h3>
-                <div>
-                  By
-                  <a href="https://www.lunar.gg/u/Physci">
-<span class="name-color-owner">
-Physci,
-</span>
-                  </a>
-                  <time datetime="1559157951117" data-format="ago" data-toggle="tooltip" data-original-title="3:25 PM May 29 2019">4 years ago</time>
-                </div>
-              </td>
-              <td>
-                52
-              </td>
-              <td>
-                <time datetime="1559419072476" data-format="ago" data-toggle="tooltip" data-original-title="3:57 PM Jun 1 2019">4 years ago</time>
-              </td>
-            </tr>
-            <tr>
-              <td>
-<span class="upvotes ">
-47
-</span>
-              </td>
-              <td>
-                <h3>
-                  <a href="https://www.lunar.gg/forums/49814/practice-10v10-tournament-1" class="break-word">
-                    Practice 10v10 Tournament #1
-                  </a>
-                </h3>
-                <div>
-                  By
-                  <a href="https://www.lunar.gg/u/Physci">
-<span class="name-color-owner">
-Physci,
-</span>
-                  </a>
-                  <time datetime="1558646328149" data-format="ago" data-toggle="tooltip" data-original-title="5:18 PM May 23 2019">4 years ago</time>
-                </div>
-              </td>
-              <td>
-                19
-              </td>
-              <td>
-                <time datetime="1558796061194" data-format="ago" data-toggle="tooltip" data-original-title="10:54 AM May 25 2019">4 years ago</time>
+                N/A
               </td>
             </tr>
             </tbody>

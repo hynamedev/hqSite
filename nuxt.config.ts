@@ -18,7 +18,8 @@ export default defineNuxtConfig({
       ],
       script: [
         { src: 'https://code.jquery.com/jquery-3.2.1.min.js', crossorigin: 'anonymous' },
-        { src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/js/bootstrap.bundle.min.js', crossorigin: 'anonymous' }
+        { src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0-beta.2/dist/js/bootstrap.bundle.min.js', crossorigin: 'anonymous' },
+        { src: '/static/js/main.js', crossorigin: 'anonymous' }
       ]
 
     }

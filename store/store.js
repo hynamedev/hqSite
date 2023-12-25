@@ -109,3 +109,42 @@ export const isPostStore = defineStore({
   }),
 });
 
+
+export const postStore = defineStore({
+  id: 'post',
+  state: () => ({
+    data: {}
+  }),
+});
+
+
+export const featuredPostsStore = defineStore({
+  id: 'featuredPosts',
+  state: () => ({
+    data: []
+  }),
+});
+
+
+export const forumStore = defineStore({
+  id: 'forum',
+  state: () => ({
+    data: {}
+  }),
+});
+
+export const topPostsStore = defineStore({
+  id: 'topPosts',
+  state: () => ({
+    data: []
+  }),
+});
+
+export const teamStatsStore = defineStore({
+  id: 'teamStats',
+  state: () => ({
+    data: {}
+  }),
+});
+
+

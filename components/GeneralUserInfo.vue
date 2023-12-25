@@ -62,9 +62,10 @@ const headers = config.authHeader;
         </div>
       </li>
       <li>
+
         <div class="team-box bg-06">
-          <a :href="'/u/' + props.usernameParameter + '/uhc'">
-            <strong class="title">UHC</strong>
+          <a :href="'/u/' + props.usernameParameter + '/hcteams'">
+            <strong class="title">HCTeams</strong>
             <ul class="statistic-item">
               <li>
                 No Games Played
@@ -87,8 +88,8 @@ const headers = config.authHeader;
       </li>
       <li>
         <div class="team-box bg-04">
-          <a :href="'/u/' + props.usernameParameter + '/meetup'">
-            <strong class="title">Meetup</strong>
+          <a :href="'/u/' + props.usernameParameter + '/uhc'">
+            <strong class="title">UHC</strong>
             <ul class="statistic-item">
               <li>
                 No Games Played

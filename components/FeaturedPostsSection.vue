@@ -27,7 +27,7 @@ defineProps({
           </div>
         </div>
 
-        <Post v-for="post in posts" :title=post.title :content=post.content :link=post.link :post-date=post.postDate :author=post.author></Post>
+        <Post v-for="post in posts" :title=post.title :content=post.content :link=post._id :post-date=post.postDate :author=post.author.name></Post>
 
       </div>
 </template>

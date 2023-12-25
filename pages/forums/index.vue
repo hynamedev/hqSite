@@ -6,7 +6,13 @@ const route = useRoute()
 let posts = ref([]);
 let onlinePlayers = ref(1)
 function getPosts() {
-  posts = ref([{title: "a", content: "a", link: "a", postDate: 0, author: "tt"},
+  posts = ref([
+      {
+        title: "a",
+        content: "a",
+        link: "a",
+        postDate: 1533179891658,
+        author: "prplz"},
     {
       title: "b",
       content: "b",

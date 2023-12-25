@@ -73,7 +73,7 @@ import {usernameStore, uuidStore} from "~/store/store.js";
                     <span class="user-name">{{ usernameStore().data }}</span>
                   </div>
                   <div class="user-avatar">
-                    <img :src="'https://visage.surgeplay.com/face/22/' + uuidStore().data" :alt="usernameStore().data" height="42" width="42" class="avatar-face">
+                    <img :src="'https://minotar.net/avatar/' + uuidStore().data + '/22'" :alt="usernameStore().data" height="42" width="42" class="avatar-face">
                   </div>
                 </div>
               </a>

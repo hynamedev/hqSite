@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 // Connect to MongoDB
 async function connect() {
-    mongoose.connect('mongodb://localhost/Practice', {useNewUrlParser: true, useUnifiedTopology: true});
+    await mongoose.connect('mongodb://localhost/', {});
+    // mongoose.connect('mongodb://localhost/', {});
 }
 
 
@@ -28,96 +29,31 @@ const playerStatisticsSchema = new mongoose.Schema({
   }
 }, { collection: 'playerStatistics' }); // specify the collection name
 
-const itemSchema = new mongoose.Schema({
-    id: Number,
-    data: Number,
-    count: Number
-});
-
-const playerSchema = new mongoose.Schema({
-    playerUuid: String,
-    lastUsername: String,
-    armor: [itemSchema],
-    inventory: [itemSchema],
-    potionEffects: [String],
-    hunger: Number,
-    health: Number,
-    totalHits: Number,
-    longestCombo: Number,
-    missedPots: Number,
-    ping: Number,
-    thrownPots: Number,
-    missedDebuffs: Number,
-    thrownDebuffs: Number,
-    kit: String
-});
-
-const teamSchema = new mongoose.Schema({
-    allMembers: [String],
-    aliveMembers: [String]
-});
-
-const locationSchema = new mongoose.Schema({
-    world: String,
-    x: Number,
-    y: Number,
-    z: Number,
-    yaw: Number,
-    pitch: Number
-});
-
-const matchSchema = new mongoose.Schema({
-    _id: String,
-    kitType: String,
-    arena: String,
-    teams: [teamSchema],
-    postMatchPlayers: {
-        type: Map,
-        of: playerSchema
-    },
-    spectators: [String],
-    winner: Number,
-    endReason: String,
-    state: String,
-    startedAt: Date,
-    endedAt: Date,
-    ranked: Boolean,
-    wins: Object,
-    matchAmount: Number,
-    threeSecond: Boolean,
-    allowRematches: Boolean,
-    eloChange: Number,
-    placedBlocks: [String],
-    potionsThrown: Object,
-    lastHit: Object,
-    lastHitLocation: locationSchema,
-    combos: Object,
-    totalHits: Object,
-    longestCombo: Object,
-    missedPots: Object,
-    thrownPots: Object,
-    thrownDebuffs: Object,
-    missedDebuffs: Object,
-    replayableActions: [String],
-    allPlayers: [String],
-    winningPlayers: [String],
-    losingPlayers: [String]
-}, { collection: 'matches' });
 
 // Create a model
 const PlayerStatistics = mongoose.model('PlayerStatistics', playerStatisticsSchema);
 
-async function readDocument(collectionName, id) {
-    await mongoose.connect('mongodb://localhost/Practice', {useNewUrlParser: true, useUnifiedTopology: true});
+
+async function readDocument(database, collectionName, id) {
+    await mongoose.disconnect()
+    await mongoose.connect('mongodb://localhost/' + database, {});
     const collection = mongoose.connection.collection(collectionName);
     const document = await collection.findOne({_id: id});
+    await mongoose.disconnect()
     return document;
+}
+
+
+async function saveDocument(database, collectionName, document) {
+    await mongoose.connect('mongodb://localhost/' + database, {});
+    const collection = mongoose.connection.collection(collectionName);
+    await collection.insertOne(document);
 }
 
 // Retrieve data
 async function readPlayerStats(uuid) {
     var stats = {};
-    await connect();
+    await mongoose.connect('mongodb://localhost/Practice', {});
     const data = await PlayerStatistics.findOne(
         {_id: `${uuid}`}
     );
@@ -129,13 +65,14 @@ async function readPlayerStats(uuid) {
     stats = data.toObject();
     // PlayerStatistics.findOne({_id: `${uuid}`}, function(err,obj) { console.log(obj); }, null)
 
+    await mongoose.disconnect();
     return stats;
 }
 
 async function readMatch(id) {
     var stats = {};
     await connect();
-    const data = await readDocument('matches', id)
+    const data = await readDocument('Practice', 'matches', id)
 
     if(data == null) {
         return {};
@@ -150,7 +87,7 @@ async function readMatch(id) {
 async function readKit(id) {
     var stats = {};
     await connect();
-    const data = await readDocument('kitTypes', id)
+    const data = await readDocument('Practice','kitTypes', id)
 
     if(data == null) {
         return {};
@@ -162,10 +99,76 @@ async function readKit(id) {
     return stats;
 }
 
+async function readPost(id) {
+    var post = {};
+    await connect();
+    const data = await readDocument('hqSite', 'forumPosts', id)
+
+    if(data == null) {
+        return {};
+    }
+
+    post = data;
+    // PlayerStatistics.findOne({_id: `${uuid}`}, function(err,obj) { console.log(obj); }, null)
+
+    return post;
+}
+
+
+async function readFeaturedPosts() {
+
+
+    await mongoose.connect('mongodb://localhost/hqSite', {});
+
+    const collection = mongoose.connection.collection('forumPosts');
+    const document = collection.find({featured: true});
+
+
+    const data = await document.toArray();
+
+    if(data == null) {
+        return {};
+    }
+
+    // PlayerStatistics.findOne({_id: `${uuid}`}, function(err,obj) { console.log(obj); }, null)
+
+    await mongoose.disconnect()
+    return data;
+}
+
+async function readTopPosts(forum) {
+
+    await mongoose.connect('mongodb://localhost/hqSite', {});
+
+    const collection = mongoose.connection.collection('forumPosts');
+    const document = collection.find({forumId: forum}).limit(30);
+
+
+    const data = await document.toArray();
+
+    if(data == null) {
+        return {};
+    }
+
+    await mongoose.disconnect()
+    return data;
+}
+
+async function savePost(document) {
+    await connect();
+    await saveDocument('hqSite', 'forumPosts', document)
+}
+
 
 module.exports = {
     readPlayerStats,
     connect,
     readMatch,
-    readKit
+    readKit,
+    readPost,
+    savePost,
+    readFeaturedPosts,
+    readDocument,
+    saveDocument,
+    readTopPosts
 }
