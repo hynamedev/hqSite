@@ -58,7 +58,6 @@ definePageMeta({
 
         if (rankResponse.ok) {
           rankInfoStore().data = await rankResponse.json();
-          console.log(rankInfoStore().data)
         } else {
           console.error('Error:', rankResponse.status, await rankResponse.text()); // Log the status and response text
         }

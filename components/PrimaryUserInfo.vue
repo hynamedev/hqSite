@@ -68,7 +68,9 @@ const formatTimeAgo = (date) => {
 
 
         <div id="user-info" class="user-box" :data-player="usernameStore().data">
-          <img :src="'https://visage.surgeplay.com/full/400/' + uuidStore().data + '.png'" :alt="usernameStore().data" height="200" width="88" style="transform: scale(1.3); object-fit: contain;" class="avatar-half">
+          <div class="img-box">
+            <img :src="'https://visage.surgeplay.com/bust/400/' + uuidStore().data + '.png'" :alt="usernameStore().data" height="168" width="168" style="transform: scale(1.0); object-fit: contain;" class="avatar-half">
+          </div>
           <strong class="name">{{ usernameStore().data }}</strong>
         </div>
         <div class="premium-box">
@@ -82,7 +84,7 @@ const formatTimeAgo = (date) => {
         <ul class="statistics-item">
           <li>
             First joined
-            <b><time :datetime="userInfoStore().data.firstSeenAt" data-format="date" data-toggle="tooltip"> {{ new Date(userInfoStore().data.firstSeenAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).replace(",", "") }}</time></b>
+            <b>{{ new Date(userInfoStore().data.firstSeenAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).replace(",", "") }}</b>
           </li>
 
         </ul>

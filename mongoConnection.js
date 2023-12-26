@@ -69,6 +69,22 @@ async function readPlayerStats(uuid) {
     return stats;
 }
 
+
+async function readHCTeamsStats(uuid) {
+    var stats = {};
+    const data = readDocument('HCTeams', 'Players', uuid.replace(/-/g, ''))
+
+    if(data == null) {
+        return {};
+    }
+
+    stats = data;
+    // PlayerStatistics.findOne({_id: `${uuid}`}, function(err,obj) { console.log(obj); }, null)
+
+    await mongoose.disconnect();
+    return stats;
+}
+
 async function readMatch(id) {
     var stats = {};
     await connect();
@@ -170,5 +186,6 @@ module.exports = {
     readFeaturedPosts,
     readDocument,
     saveDocument,
-    readTopPosts
+    readTopPosts,
+    readHCTeamsStats
 }

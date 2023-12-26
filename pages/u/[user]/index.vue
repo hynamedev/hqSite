@@ -77,6 +77,8 @@ definePageMeta({
 
         playerStatsStore().data = await mongo.readPlayerStats(uuidStore().data);
 
+        teamStatsStore().data = await mongo.readHCTeamsStats(uuidStore().data);
+
       }
   ]
 })
@@ -100,7 +102,7 @@ definePageMeta({
               <GeneralUserInfo :username-parameter="usernameStore().data"
                                :uuid-parameter="uuidStore().data"
                                :practice-stats="playerStatsStore().data"
-                               :team-stats="teamStatsStore().data"/>
+                               :hcteams-stats="teamStatsStore().data"/>
 
               <ProfileComments :username-parameter="usernameStore().data"/>
             </div>
