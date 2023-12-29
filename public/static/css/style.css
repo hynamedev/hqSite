@@ -13497,6 +13497,7 @@ body {
 }
 
 #wrapper {
+    min-height: calc(100vh - 295px);
     display: table-cell
 }
 

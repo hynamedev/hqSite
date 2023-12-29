@@ -1,12 +1,36 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import mongo from './mongoConnection'
+import axios from 'axios';
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
-  modules: ['@pinia/nuxt',
+  modules: [
+    ['@nuxtjs/auth-next',
+      {
+        async login(email: any, password: any, userIp: any) {
+          try {
+            const response = await this.$axios.$get(`/users/${email}/verifyPassword`, {
+              params: {
+                password,
+                userIp
+              }
+            })
+
+            if (response.authorized) {
+              await this.$auth.setUserToken(response.session)
+            } else {
+              throw new Error('Unauthorized')
+            }
+          } catch (error) {
+            console.error(error)
+          }
+        }
+      }
+    ],
+    '@pinia/nuxt',
     async function () {
-      mongo.connect();
+      await mongo.connect();
     }
   ],
   app: {
@@ -22,6 +46,26 @@ export default defineNuxtConfig({
         { src: '/static/js/main.js', crossorigin: 'anonymous' }
       ]
 
+    }
+  },
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'session',
+          required: true,
+          type: 'Bearer'
+        },
+        user: {
+          property: 'uuid',
+          autoFetch: true
+        },
+        endpoints: {
+          login: false, // We'll handle login with a custom method
+          logout: false,
+          user: false
+        }
+      }
     }
   }
 })

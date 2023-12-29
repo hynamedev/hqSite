@@ -18,7 +18,7 @@ import {ref} from "vue";
                 <div class="holder-section-box">
                   <div class="img-title">
                     <div class="bg-stretch" id="stretch-background"></div>
-                    <img src="../static/images/logos/logo.png" width="96" height="96" alt="Logo">
+                    <img src="/static/images/logos/logo.png" width="96" height="96" alt="Logo">
                   </div>
                   <div class="holder-section-text">
                     <h2>Register In-Game</h2>

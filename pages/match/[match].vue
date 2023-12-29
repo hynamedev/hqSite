@@ -13,6 +13,7 @@ definePageMeta({
       matchStore().data = await mongo.readMatch(to.params.match);
       kitStore().data = await mongo.readKit(matchStore().data.kitType);
 
+
     }
   ]
 });
@@ -80,13 +81,15 @@ const kit = kitStore().data.displayName;
               <div class="text-center">
                    <span style="font-size: 26pt">
                      <img :src="'https://minotar.net/avatar/' + player1 + '/32'" alt="" height="32" width="32" class="avatar-face">
-                    {{ matchStore().data.postMatchPlayers[player1].lastUsername }}
+                      {{ matchStore().data.postMatchPlayers[player1].lastUsername }}
+                     <span style="color: green" v-if="matchStore().data.ranked">(+{{ matchStore().data.eloChange.winnerGain }})</span>
                    </span>
                 <span style="font-size: 18pt"> vs </span>
                 <span style="font-size: 26pt">
                   {{ matchStore().data.postMatchPlayers[player2].lastUsername }}
+                  <span style="color: red" v-if="matchStore().data.ranked">({{ matchStore().data.eloChange.loserGain }})</span>
                   <img :src="'https://minotar.net/avatar/' + player2 + '/32'" alt="" height="32" width="32" class="avatar-face">
-                   </span>
+                </span>
                 <br>
                 {{ kit }} • {{ formatTimeAgo(matchStore().data.endedAt) }}
               </div>
@@ -110,7 +113,7 @@ const kit = kitStore().data.displayName;
                     <table style="background-repeat: no-repeat; background-size: cover; background-image: url(https://i.imgur.com/IoObQfJ.png)">
                       <tbody>
                       <tr>
-                        <td v-for="i in [27, 28, 29, 30, 31, 32, 33, 34, 35]">
+                        <td v-for="i in [9, 10, 11, 12, 13, 14, 15, 16, 17]">
                           <span v-if="matchStore().data.postMatchPlayers[player1].inventory[i] != null">
                             <span
                                 :class="'item item_' + matchStore().data.postMatchPlayers[player1].inventory[i].id +
@@ -142,10 +145,10 @@ const kit = kitStore().data.displayName;
                         </td>
                       </tr>
                       <tr>
-                        <td v-for="i in [9, 10, 11, 12, 13, 14, 15, 16, 17]">
+                        <td v-for="i in [27, 28, 29, 30, 31, 32, 33, 34, 35]">
                           <span v-if="matchStore().data.postMatchPlayers[player1].inventory[i] != null">
                             <span
-                                  :class="'item item_' + matchStore().data.postMatchPlayers[player1].inventory[i].id +
+                                :class="'item item_' + matchStore().data.postMatchPlayers[player1].inventory[i].id +
                                 ' item_' + matchStore().data.postMatchPlayers[player1].inventory[i].id +
                                 '_' + matchStore().data.postMatchPlayers[player1].inventory[i].data"></span>
                             <div v-if="matchStore().data.postMatchPlayers[player1].inventory[i].count > 1" style="position: relative; width: 0; height: 0">
@@ -322,13 +325,13 @@ const kit = kitStore().data.displayName;
                 <div class="col-4">
                   <div class="stats-block">
                     <h2>Hits</h2>
-                    {{ matchStore().data.postMatchPlayers[player1].totalHits }}
+                    {{ matchStore().data.postMatchPlayers[player2].totalHits }}
                   </div>
                 </div>
                 <div class="col-4">
                   <div class="stats-block">
                     <h2>Longest Combo</h2>
-                    {{ matchStore().data.postMatchPlayers[player1].longestCombo }}
+                    {{ matchStore().data.postMatchPlayers[player2].longestCombo }}
                   </div>
                 </div>
               </div>
@@ -932,11 +935,14 @@ const kit = kitStore().data.displayName;
 .item_373_16420 {background-position:-160px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16421 {background-position:-192px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16425 {background-position:-224px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
+.item_373_16424 {background-position:-32px -128px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
+.item_373_16426 {background-position:-96px -128px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16428 {background-position:-256px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16449 {background-position:-288px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16450 {background-position:-320px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16451 {background-position:-352px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16452 {background-position:-384px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
+.item_373_16453 {background-position:-192px -96px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16454 {background-position:0px -128px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16456 {background-position:-32px -128px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}
 .item_373_16457 {background-position:-64px -128px;background-image:url(https://raw.githubusercontent.com/web93onv/Minecraft-blocks-and-items-icons/master/blocks_items_potions.png);}

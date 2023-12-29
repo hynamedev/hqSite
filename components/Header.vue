@@ -8,7 +8,7 @@ import {usernameStore, uuidStore} from "~/store/store.js";
       <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
           <a class="navbar-brand mr-3" href="/">
-            <img src="../static/images/logos/text.png" alt="Text Logo">
+            <img src="/static/images/logos/text.png" alt="Text Logo">
           </a>
           <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -22,6 +22,11 @@
 
 <style>
 
+@import "/static/css/font-awesome.css";
+@import "/static/css/fonts.css";
+@import "/static/css/schedule.css";
+@import "/static/css/style.css";
+
 * {
   margin: 0;
   padding: 0;
@@ -30,7 +35,4 @@
 </style>
 <script setup>
 import jquery from 'jquery'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-
 </script>

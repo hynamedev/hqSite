@@ -16,7 +16,6 @@ const route = useRoute()
 
 // true = its a post, false = its a forum/category
 
-
 definePageMeta({
   middleware: [
     async function (to, from, next) {
@@ -72,6 +71,16 @@ definePageMeta({
   ]
 })
 
+if(isPostStore().data) {
+
+  useSeoMeta({
+    title:  postStore().data.title + ' - ' + config.serverName,
+  })
+} else {
+  useSeoMeta({
+    title:  forumStore().data.displayName + ' - ' + config.serverName,
+  })
+}
 
 </script>
 

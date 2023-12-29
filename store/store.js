@@ -147,4 +147,39 @@ export const teamStatsStore = defineStore({
   }),
 });
 
+export const playerEloStore = defineStore({
+  id: 'playerElo',
+  state: () => ({
+    data: {}
+  }),
+});
+
+export const kitsStore = defineStore({
+  id: 'kits',
+  state: () => ({
+    data: {}
+  }),
+});
+
+export const matchesStore = defineStore({
+  id: 'matches',
+  state: () => ({
+    data: []
+  }),
+});
+
+export const rankedKitsStore = defineStore({
+  id: 'rankedKits',
+  state: () => ({
+    data: []
+  }),
+});
+
+export const leaderboardStore = defineStore({
+  id: 'leaderboards',
+  state: () => ({
+    data: []
+  }),
+});
+
 

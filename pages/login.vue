@@ -9,35 +9,27 @@ const userId = ref('')
 const password = ref('')
 
 
+
 const login = async () => {
   try {
+    // Call the loginWith method of the $auth object
+    await this.$auth.loginWith('local', {
+      data: {
+        email: userId.value,
+        password: password.value,
+        userIp: 'userIp' // replace 'userIp' with the actual user IP
+      }
+    })
 
-    const headers = config.authHeader;
-    const response = await fetch(authConfig.apiHost + `/users/${userId.value}/verifyPassword?password=${password.value}`, {
-      method: 'GET',
-      headers: headers
-    });
-
-    const data = await response.json()
-
-    console.log(data)
-
-    if (data.authorized) {
-      // Store session information in a cookie or local storage
-      cookies.set('MHQ-UserSession', data.session)
-      cookies.set('MHQ-UserIp', data.uuid)
-
-      // Redirect to home page or dashboard
-      router.push('/')
-    } else {
-      // Handle login failure
-      console.log('Login failed')
-    }
+    // If login is successful, the user will be redirected to the home page
+    this.$router.push('/')
   } catch (error) {
-    // Handle request error
-    console.log(error)
+    // Handle login failure
+    console.error('Login failed:', error)
   }
 }
+
+
 
 </script>
 
@@ -54,7 +46,7 @@ const login = async () => {
                   <div class="login-holder">
                     <div class="login-header">
                       <div class="bg-stretch" id="stretch-background"></div>
-                      <img src="../static/images/logos/logo.png" width="96" height="96" alt="Logo">
+                      <img src="/static/images/logos/logo.png" width="96" height="96" alt="Logo">
                     </div>
                     <form @submit.prevent="login">
                       <h2><i class="fa fa-lock" aria-hidden="true"></i><span>LOGIN</span></h2>
@@ -66,8 +58,8 @@ const login = async () => {
                         <button type="submit" class="btn btn-primary">Log in</button>
                       </div>
                       <div class="login-links">
-                        <a href="register" class="register">register an account</a>
-                        <a href="reset">reset your password</a>
+                        <a href="/register" class="register">register an account</a>
+                        <a href="/reset">reset your password</a>
                       </div>
                     </form>
                   </div>

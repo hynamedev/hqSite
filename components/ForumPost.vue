@@ -46,7 +46,7 @@ const formatTimeAgo = (date) => {
                 </a>
               </li>
               <li class="breadcrumb-item">
-                <a :href="'/' + forum._id">
+                <a :href="'/forums/' + forum._id">
                   {{ forum.displayName }}
                 </a>
               </li>

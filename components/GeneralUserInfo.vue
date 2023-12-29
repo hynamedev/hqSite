@@ -67,7 +67,7 @@ function formatSeconds(seconds) {
                 <b>{{ (props.hcteamsStats.Deaths !== undefined ? props.hcteamsStats.Deaths : "N/A") }}</b> {{ (props.hcteamsStats.Deaths === 1 ? 'Death' : 'Deaths')}}
               </li>
               <li>
-                <b>{{ (props.hcteamsStats.KDR !== undefined ? props.hcteamsStats.KDR : "N/A") }}</b> K/D Ratio
+                <b>{{ (props.hcteamsStats.KDR !== undefined ? Math.ceil(props.hcteamsStats.KDR * 100) / 100 : "N/A") }}</b> K/D Ratio
               </li>
             </ul>
             <ul class="statistic-item" v-else>
@@ -103,7 +103,7 @@ function formatSeconds(seconds) {
                 <b>{{ props.practiceStats.GLOBAL.LOSSES }}</b> Losses
               </li>
               <li>
-                <b>{{ props.practiceStats.GLOBAL.WLR }}</b> W/L Ratio
+                <b>{{ Math.ceil(props.practiceStats.GLOBAL.WLR * 100) / 100 }}</b> W/L Ratio
               </li>
             </ul>
           </a>

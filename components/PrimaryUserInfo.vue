@@ -91,9 +91,26 @@ const formatTimeAgo = (date) => {
       </div>
       <div class="box profile-friends-box" data-url="/u/0698321465877836/friends-box">
         <strong class="heading">
-          0 friends :(
+          1 friend
         </strong>
         <div class="friends-box-plagin">
+          <div class="friends-holder">
+
+            <a href="/u/InvalidException">
+              <div data-toggle="tooltip" data-placement="top" title="" data-original-title="InvalidException"><img src="https://minotar.net/avatar/5dbd02e1-ef79-42d9-85bb-297e459c2816/34" alt="ztxv" height="34" width="34" class="avatar-face"></div>
+            </a>
+
+          </div>
+        </div>
+        <div>
+
+          <div class="request-box">
+            <div class="btn-holder">
+              <button type="button" class="btn btn-success" onclick="window.location = '/login';">
+                Login to Send Friend Request
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
