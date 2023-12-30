@@ -6,28 +6,28 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
   modules: [
-    ['@nuxtjs/auth-next',
-      {
-        async login(email: any, password: any, userIp: any) {
-          try {
-            const response = await this.$axios.$get(`/users/${email}/verifyPassword`, {
-              params: {
-                password,
-                userIp
-              }
-            })
-
-            if (response.authorized) {
-              await this.$auth.setUserToken(response.session)
-            } else {
-              throw new Error('Unauthorized')
-            }
-          } catch (error) {
-            console.error(error)
-          }
-        }
-      }
-    ],
+    // ['@nuxtjs/auth-next',
+    //   {
+    //     async login(email: any, password: any, userIp: any) {
+    //       try {
+    //         const response = await this.$axios.$get(`/users/${email}/verifyPassword`, {
+    //           params: {
+    //             password,
+    //             userIp
+    //           }
+    //         })
+    //
+    //         if (response.authorized) {
+    //           await this.$auth.setUserToken(response.session)
+    //         } else {
+    //           throw new Error('Unauthorized')
+    //         }
+    //       } catch (error) {
+    //         console.error(error)
+    //       }
+    //     }
+    //   }
+    // ],
     '@pinia/nuxt',
     async function () {
       await mongo.connect();
@@ -48,24 +48,24 @@ export default defineNuxtConfig({
 
     }
   },
-  auth: {
-    strategies: {
-      local: {
-        token: {
-          property: 'session',
-          required: true,
-          type: 'Bearer'
-        },
-        user: {
-          property: 'uuid',
-          autoFetch: true
-        },
-        endpoints: {
-          login: false, // We'll handle login with a custom method
-          logout: false,
-          user: false
-        }
-      }
-    }
-  }
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       token: {
+  //         property: 'session',
+  //         required: true,
+  //         type: 'Bearer'
+  //       },
+  //       user: {
+  //         property: 'uuid',
+  //         autoFetch: true
+  //       },
+  //       endpoints: {
+  //         login: false, // We'll handle login with a custom method
+  //         logout: false,
+  //         user: false
+  //       }
+  //     }
+  //   }
+  // }
 })
